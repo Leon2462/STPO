@@ -30,15 +30,14 @@ const App = () => {
             errorMessage += 'Введено больше 10 элементов!\n\n'
         }
         // Проверка элементов
-        array.forEach(item => {
+        array.forEach((item,ind) => {
             if (Math.abs(+item) >= 100 && Math.abs(+item) <= 999 && Number.isInteger(+item)) {
-                item = parseInt(item)
+                array[ind] = parseInt(item)
             } else {
                 errors = true
                 errorElements.push(item)
             }
         })
-
         if (errors) {
 
             console.log('Failed')
@@ -61,7 +60,6 @@ const App = () => {
             {
                 setResult('')
             }
-
             const new_array = appMethods.deleteElems(array)
             if (new_array.join() !== array.join()) {
                 setResult('Результат: ' + new_array.join())
@@ -83,10 +81,10 @@ const App = () => {
                 массив или сообщение о том, что нет чисел, удовлетворяющих условию.
             </p>
             <label>Поле для ввода элементов массива: </label>
-             <input type = "text" onChange = {inputHandler} value = {inputValue}/>
+             <input style = {{width: '300px'}}type = "text" onChange = {inputHandler} value = {inputValue}/>
             <button style = {{margin: '10px'}} onClick={clearInput}>Очистить поле</button>
             <button onClick={deleteElem}>Удалить числа</button>
-            <div style={{whiteSpace: 'pre-line'}}>{errors}</div>
+            <div style={{whiteSpace: 'pre-line', color: 'red' }}>{errors}</div>
             <div>{result}</div>
         </div>
     )
