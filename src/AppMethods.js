@@ -55,7 +55,7 @@ export class AppMethods {
         }
         else {
             const result = this.deleteElems(nums)
-            if (result.join() == nums.join()) {
+            if (result.join() === nums.join()) {
                 return ['Нет чисел удовлетворяющих условию!',true]
             }
             else if (result){
