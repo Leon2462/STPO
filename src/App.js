@@ -20,54 +20,21 @@ const App = () => {
     }
 
     const deleteElem = () => {
-        let errors = false;
-        let errorElements = [];
-        let errorMessage = '';
-        const array = inputValue.split(' ').filter( n=>n )
-        // Проверка длины
-        if (array.length > 10) {
-            errors = true;
-            errorMessage += 'Введено больше 10 элементов!\n\n'
-        }
-        // Проверка элементов
-        array.forEach((item,ind) => {
-            if (Math.abs(+item) >= 100 && Math.abs(+item) <= 999 && Number.isInteger(+item)) {
-                array[ind] = parseInt(item)
-            } else {
-                errors = true
-                errorElements.push(item)
-            }
-        })
-        if (errors) {
-
-            console.log('Failed')
-
-            if (errorElements.length !== 0)
-            {
-                errorMessage += 'Некорректные элементы: ' + errorElements.join('  ')
-            }
-            setErrors(errorMessage)
-            setResult('')
+        if (inputValue) {
+        const result = appMethods.calcResult(inputValue)
+        if (result[1]) {
+            setResult(result[0])
+            setErrors('')
         }
         else {
-
-            console.log('Success')
-
-            if (errorMessage === '') {
-                setErrors('')
-            }
-            if (array.length === 0)
-            {
-                setResult('')
-            }
-            const new_array = appMethods.deleteElems(array)
-            if (new_array.join() !== array.join()) {
-                setResult('Результат: ' + new_array.join())
-            }
-            else if (new_array.length !== 0){
-                setResult('Нет чисел удовлетворяющих условию!')
-            }
+            setErrors(result[0])
+            setResult('')
         }
+    } else {
+        setErrors('')
+        setResult('')
+    }
+
     }
     return (
         <div>
@@ -89,4 +56,4 @@ const App = () => {
         </div>
     )
 }
-export default App; 
+export default App;
