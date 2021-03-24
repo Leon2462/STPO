@@ -50,7 +50,7 @@ const App = () => {
             <label>Поле для ввода элементов массива: </label>
              <input style = {{width: '300px'}}type = "text" onChange = {inputHandler} value = {inputValue}/>
             <button style = {{margin: '10px'}} onClick={clearInput}>Очистить поле</button>
-            <button onClick={deleteElem}>Удалить числа</button>
+            <button onClick={deleteElem}>Удалить элементы</button>
             <div style={{whiteSpace: 'pre-line', color: 'red' }}>{errors}</div>
             <div>{result}</div>
         </div>

@@ -11,7 +11,7 @@ export class AppMethods {
     }
 
     isPowerOfTwo(num) {
-        let n = parseInt(num)
+        const n = parseInt(num)
         return Boolean(!!n & !(n & (n - 1)))
     }
 
@@ -59,7 +59,7 @@ export class AppMethods {
                 return ['Нет чисел удовлетворяющих условию!',true]
             }
             else if (result){
-                return ['Результат: ' + this.deleteElems(nums).join(), true]
+                return ['Результат: ' + this.deleteElems(nums).join(', '), true]
             }
         }
     }
